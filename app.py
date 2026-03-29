@@ -1,6 +1,15 @@
 import streamlit as st
 import pickle
 import pandas as pd
+import os
+import gdown
+
+st.title('Movie Recommendation System')
+
+
+if not os.path.exists("similarity.pkl") or os.path.getsize("similarity.pkl") < 1000000:
+    with st.spinner("Downloading similarity file, please wait..."):
+        gdown.download("https://drive.google.com/uc?id=1OBs-6uB-wyW-rHogZQDIVViEDVGHpCwb", "similarity.pkl", quiet=False, fuzzy=True)
 
 
 # Function to recommend movies
@@ -16,7 +25,7 @@ def recommend(movie):
   return recommended_movies
 
 
-movies_dict = pickle.load(open('movie_dict.pkl', 'rb'))
+movies_dict = pickle.load(open('movie.pkl', 'rb'))
 movies = pd.DataFrame(movies_dict)
 
 
