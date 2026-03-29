@@ -3,6 +3,7 @@ import pickle
 import ast
 import requests
 import os
+import gdown
 
 if not os.path.exists("similarity.pkl") or os.path.getsize("similarity.pkl") < 1000000:
     with st.spinner("Downloading similarity file, please wait..."):
